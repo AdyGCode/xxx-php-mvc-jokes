@@ -1,0 +1,41 @@
+{
+  "name": "your_github_username/xxx-php-mvc-jokes",
+  "description": "Vanilla MVC Joke Database App",
+  "type": "project",
+  "version": "1.0",
+  "time": "2024-09-06",
+  "keywords": [
+    "MVC",
+    "jokes",
+    "vanilla",
+    "application",
+    "mysql",
+    "mariadb"
+  ],
+  "minimum-stability": "stable",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Adrian Gould",
+      "email": "Adrian.Gould@nmtafe.wa.edu.au",
+      "homepage": "https://adygcode.github.io",
+      "role": "Developer"
+    },
+    {
+      "name": "STUDENT NAME",
+      "email": "student-id@tafe.wa.edu.au",
+      "homepage": "https://github-username.github.io"
+    }
+  ],
+  "require": {
+    "php": ">=8.3",
+    "ext-pdo": "*",
+    "erusev/parsedown": "^1.7"
+  },
+  "autoload": {
+    "psr-4": {
+      "Framework\\": "Framework/",
+      "App\\": "App/"
+    }
+  }
+}
