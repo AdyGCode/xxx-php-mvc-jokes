@@ -62,6 +62,7 @@ DROP TABLE IF EXISTS `xxx_php_mvc_jokes`.`users`;
 CREATE TABLE `xxx_php_mvc_jokes`.`users`
 (
     `id`            BIGINT UNSIGNED AUTO_INCREMENT,
+    `nickname`      VARCHAR(64)  NOT NULL,
     `given_name`    VARCHAR(64)  NOT NULL,
     `family_name`   VARCHAR(64)  NULL     DEFAULT NULL,
     `email`         VARCHAR(320) NOT NULL,
@@ -85,39 +86,39 @@ CREATE TABLE `xxx_php_mvc_jokes`.`users`
 -- Default password used below is: Password123
 -- Create your own hashed passwords by visiting http://xxx-mvc-jokes.text/auth/password
 -- --------------------------------------------------------------------------------------------
-INSERT INTO `xxx_php_mvc_jokes`.`users` (`id`, `given_name`, `email`, `user_password`, `created_at`)
-VALUES (1, 'Unknown', 'no-reply@example.com', '1234567890', '1970-01-01 00:00:01');
+INSERT INTO `xxx_php_mvc_jokes`.`users` (`id`, `nickname`, `given_name`, `email`, `user_password`, `created_at`)
+VALUES (1, 'X', 'Unknown', 'no-reply@example.com', '1234567890', '1970-01-01 00:00:01');
 
 
-INSERT INTO `xxx_php_mvc_jokes`.`users` (`id`, `given_name`, `email`, `user_password`, `created_at`)
-VALUES (10, 'Administrator', 'admin@example.com',
+INSERT INTO `xxx_php_mvc_jokes`.`users` (`id`, `nickname`, `given_name`, `email`, `user_password`, `created_at`)
+VALUES (10,'Guvner', 'Administrator', 'admin@example.com',
         '$2y$12$EZymemwtvalA/Nz8H6inPeGzy945cJzxPBGZ2vCFgxUb3ushBZZ5C',
         '2024-01-01 00:01:02');
 
-INSERT INTO `users` (`id`, `given_name`, `family_name`, `email`, `user_password`, `created_at`)
-VALUES (20, 'Adrian', 'Gould', 'adrian@example.com',
+INSERT INTO `users` (`id`, `nickname`, `given_name`, `family_name`, `email`, `user_password`, `created_at`)
+VALUES (20, 'Ady', 'Adrian', 'Gould', 'adrian@example.com',
         '$2y$12$EZymemwtvalA/Nz8H6inPeGzy945cJzxPBGZ2vCFgxUb3ushBZZ5C',
         '2024-01-01 01:03:05');
 
 -- --------------------------------------------------------------------------------------------
 -- !! Ensure you change the GIVEN_NAME and FAMILY_NAME in the seed data below                !!
 -- --------------------------------------------------------------------------------------------
-INSERT INTO `users` (`id`, `given_name`, `family_name`, `email`, `user_password`, `created_at`)
-VALUES (30, 'GIVEN_NAME', 'FAMILY_NAME', 'GIVEN_NAME@example.com',
+INSERT INTO `users` (`id`, `nickname`, `given_name`, `family_name`, `email`, `user_password`, `created_at`)
+VALUES (30, 'NICKNAME', 'GIVEN_NAME', 'FAMILY_NAME', 'GIVEN_NAME@example.com',
         '$2y$12$EZymemwtvalA/Nz8H6inPeGzy945cJzxPBGZ2vCFgxUb3ushBZZ5C',
         '2024-01-01 02:03:05');
 
-INSERT INTO `users`(`id`, `given_name`, `family_name`, `email`, `user_password`, `created_at`, `user_id`)
-VALUES (104, 'Jacques', 'd\'Carre', 'jaques@example.com',
+INSERT INTO `users`(`id`,`nickname`, `given_name`, `family_name`, `email`, `user_password`, `created_at`, `user_id`)
+VALUES (104,'Jacques', 'Jacques', 'd\'Carre', 'jaques@example.com',
         '$2y$12$EZymemwtvalA/Nz8H6inPeGzy945cJzxPBGZ2vCFgxUb3ushBZZ5C',
         NOW(), 10),
-       (102, 'Eileen', 'Dover', 'eileen@example.com',
+       (102,'Eileen', 'Eileen', 'Dover', 'eileen@example.com',
         '$2y$12$EZymemwtvalA/Nz8H6inPeGzy945cJzxPBGZ2vCFgxUb3ushBZZ5C',
         NOW(), 20),
-       (103, 'Annie', 'Won', 'annie@example.com',
+       (103,'Annie', 'Annie', 'Won', 'annie@example.com',
         '$2y$12$EZymemwtvalA/Nz8H6inPeGzy945cJzxPBGZ2vCFgxUb3ushBZZ5C',
         NOW(), 30),
-       (101, 'Joe', 'Kerr', 'joe@example.com',
+       (101,'Joe', 'Joe', 'Kerr', 'joe@example.com',
         '$2y$12$EZymemwtvalA/Nz8H6inPeGzy945cJzxPBGZ2vCFgxUb3ushBZZ5C',
         NOW(), 30);
 
