@@ -37,5 +37,11 @@
       "Framework\\": "Framework/",
       "App\\": "App/"
     }
+  },
+  "scripts": {
+    "dev": [
+      "Composer\\Config::disableProcessTimeout",
+      "npx concurrently --ansi -c \"#93c5fd,#c4b5fd,#fdba74\" \"php -S localhost:8000 -t public\" \"npm run dev\" --names='server,vite'"
+    ]
   }
 }

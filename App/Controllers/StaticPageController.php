@@ -37,7 +37,7 @@ class StaticPageController
      */
     public function index()
     {
-        // TODO: Crete the method code for the home page
+        // TODO: Create the method code for the home page
         echo"<h1>CODE INSTALLED CORRECTLY</h1>";
         echo"<p>Time to work on the rest of the application</p>";
     }
@@ -49,6 +49,6 @@ class StaticPageController
      */
     public function about()
     {
-        // TODO: Crete the method code for the about page
+        // TODO: Create the method code for the about page
     }
 }

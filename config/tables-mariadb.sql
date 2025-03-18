@@ -9,14 +9,14 @@
 -- --------------------------------------------------------------------------------------------
 -- Make the DB active for commands
 -- --------------------------------------------------------------------------------------------
-USE xxx_php_mvc_jokes;
+USE xxx_php_mvc_jokes_yyyy_sn;
 
 
 -- --------------------------------------------------------------------------------------------
 -- Drop Categories Table and Recreate
 -- --------------------------------------------------------------------------------------------
-DROP TABLE IF EXISTS `xxx_php_mvc_jokes`.`categories`;
-CREATE TABLE `xxx_php_mvc_jokes`.`categories`
+DROP TABLE IF EXISTS `xxx_php_mvc_jokes_yyyy_sn`.`categories`;
+CREATE TABLE `xxx_php_mvc_jokes_yyyy_sn`.`categories`
 (
     `id`         BIGINT UNSIGNED AUTO_INCREMENT,
     `name`       VARCHAR(64) NOT NULL DEFAULT 'Unknown',
@@ -35,11 +35,12 @@ CREATE TABLE `xxx_php_mvc_jokes`.`categories`
 -- --------------------------------------------------------------------------------------------
 -- Drop Jokes Table and Recreate
 -- --------------------------------------------------------------------------------------------
-DROP TABLE IF EXISTS `xxx_php_mvc_jokes`.`jokes`;
-CREATE TABLE `xxx_php_mvc_jokes`.`jokes`
+DROP TABLE IF EXISTS `xxx_php_mvc_jokes_yyyy_sn`.`jokes`;
+CREATE TABLE `xxx_php_mvc_jokes_yyyy_sn`.`jokes`
 (
     `id`          BIGINT UNSIGNED AUTO_INCREMENT,
-    `joke`        TEXT         NOT NULL,
+    `title`       VARCHAR(128) NOT NULL,
+    `body`        TEXT         NOT NULL,
     `category_id` BIGINT UNSIGNED       DEFAULT 1,
     `tags`        VARCHAR(255) NULL     DEFAULT NULL,
     `author_id`   BIGINT UNSIGNED       DEFAULT 1,
@@ -47,7 +48,7 @@ CREATE TABLE `xxx_php_mvc_jokes`.`jokes`
     `updated_at`  DATETIME     NULL     DEFAULT NULL,
 
     PRIMARY KEY (`id`),
-    FULLTEXT `joke_text` (`joke`),
+    FULLTEXT `joke_text` (`body`),
     FULLTEXT `tag_index` (`tags`)
 
 ) ENGINE = InnoDB
@@ -58,8 +59,8 @@ CREATE TABLE `xxx_php_mvc_jokes`.`jokes`
 -- --------------------------------------------------------------------------------------------
 -- Drop Users Table and Recreate
 -- --------------------------------------------------------------------------------------------
-DROP TABLE IF EXISTS `xxx_php_mvc_jokes`.`users`;
-CREATE TABLE `xxx_php_mvc_jokes`.`users`
+DROP TABLE IF EXISTS `xxx_php_mvc_jokes_yyyy_sn`.`users`;
+CREATE TABLE `xxx_php_mvc_jokes_yyyy_sn`.`users`
 (
     `id`            BIGINT UNSIGNED AUTO_INCREMENT,
     `nickname`      VARCHAR(64)  NOT NULL,
@@ -86,16 +87,17 @@ CREATE TABLE `xxx_php_mvc_jokes`.`users`
 -- Default password used below is: Password123
 -- Create your own hashed passwords by visiting http://xxx-mvc-jokes.text/auth/password
 -- --------------------------------------------------------------------------------------------
-INSERT INTO `xxx_php_mvc_jokes`.`users` (`id`, `nickname`, `given_name`, `email`, `user_password`, `created_at`)
+INSERT INTO `xxx_php_mvc_jokes_yyyy_sn`.`users` (`id`, `nickname`, `given_name`, `email`, `user_password`, `created_at`)
 VALUES (1, 'X', 'Unknown', 'no-reply@example.com', '1234567890', '1970-01-01 00:00:01');
 
 
-INSERT INTO `xxx_php_mvc_jokes`.`users` (`id`, `nickname`, `given_name`, `email`, `user_password`, `created_at`)
-VALUES (10,'Guvner', 'Administrator', 'admin@example.com',
+INSERT INTO `xxx_php_mvc_jokes_yyyy_sn`.`users` (`id`, `nickname`, `given_name`, `email`, `user_password`, `created_at`)
+VALUES (10, 'Guvner', 'Administrator', 'admin@example.com',
         '$2y$12$EZymemwtvalA/Nz8H6inPeGzy945cJzxPBGZ2vCFgxUb3ushBZZ5C',
         '2024-01-01 00:01:02');
 
-INSERT INTO `users` (`id`, `nickname`, `given_name`, `family_name`, `email`, `user_password`, `created_at`)
+INSERT INTO `xxx_php_mvc_jokes_yyyy_sn`.`users` (`id`, `nickname`, `given_name`, `family_name`, `email`,
+                                                 `user_password`, `created_at`)
 VALUES (20, 'Ady', 'Adrian', 'Gould', 'adrian@example.com',
         '$2y$12$EZymemwtvalA/Nz8H6inPeGzy945cJzxPBGZ2vCFgxUb3ushBZZ5C',
         '2024-01-01 01:03:05');
@@ -103,22 +105,24 @@ VALUES (20, 'Ady', 'Adrian', 'Gould', 'adrian@example.com',
 -- --------------------------------------------------------------------------------------------
 -- !! Ensure you change the GIVEN_NAME and FAMILY_NAME in the seed data below                !!
 -- --------------------------------------------------------------------------------------------
-INSERT INTO `users` (`id`, `nickname`, `given_name`, `family_name`, `email`, `user_password`, `created_at`)
+INSERT INTO `xxx_php_mvc_jokes_yyyy_sn`.`users` (`id`, `nickname`, `given_name`, `family_name`, `email`,
+                                                 `user_password`, `created_at`)
 VALUES (30, 'NICKNAME', 'GIVEN_NAME', 'FAMILY_NAME', 'GIVEN_NAME@example.com',
         '$2y$12$EZymemwtvalA/Nz8H6inPeGzy945cJzxPBGZ2vCFgxUb3ushBZZ5C',
         '2024-01-01 02:03:05');
 
-INSERT INTO `users`(`id`,`nickname`, `given_name`, `family_name`, `email`, `user_password`, `created_at`, `user_id`)
-VALUES (104,'Jacques', 'Jacques', 'd\'Carre', 'jaques@example.com',
+INSERT INTO `xxx_php_mvc_jokes_yyyy_sn`.`users`(`id`, `nickname`, `given_name`, `family_name`, `email`, `user_password`,
+                                                `created_at`, `user_id`)
+VALUES (104, 'Jacques', 'Jacques', 'd\'Carre', 'jaques@example.com',
         '$2y$12$EZymemwtvalA/Nz8H6inPeGzy945cJzxPBGZ2vCFgxUb3ushBZZ5C',
         NOW(), 10),
-       (102,'Eileen', 'Eileen', 'Dover', 'eileen@example.com',
+       (102, 'Eileen', 'Eileen', 'Dover', 'eileen@example.com',
         '$2y$12$EZymemwtvalA/Nz8H6inPeGzy945cJzxPBGZ2vCFgxUb3ushBZZ5C',
         NOW(), 20),
-       (103,'Annie', 'Annie', 'Won', 'annie@example.com',
+       (103, 'Annie', 'Annie', 'Won', 'annie@example.com',
         '$2y$12$EZymemwtvalA/Nz8H6inPeGzy945cJzxPBGZ2vCFgxUb3ushBZZ5C',
         NOW(), 30),
-       (101,'Joe', 'Joe', 'Kerr', 'joe@example.com',
+       (101, 'Joe', 'Joe', 'Kerr', 'joe@example.com',
         '$2y$12$EZymemwtvalA/Nz8H6inPeGzy945cJzxPBGZ2vCFgxUb3ushBZZ5C',
         NOW(), 30);
 
@@ -128,23 +132,45 @@ VALUES (104,'Jacques', 'Jacques', 'd\'Carre', 'jaques@example.com',
 -- Seed Categories Table
 -- --------------------------------------------------------------------------------------------
 
-INSERT INTO `categories`(`id`,`name`,`created_at`)
-    VALUES (1,'unknown','1970-01-01 00:00:01');
+INSERT INTO `xxx_php_mvc_jokes_yyyy_sn`.`categories`(`id`, `name`, `created_at`)
+VALUES (1, 'unknown', '1970-01-01 00:00:01');
 
-INSERT INTO `categories`(`id`,`name`,`created_at`)
-    VALUES (10,'dad','1970-01-01 00:00:01');
+INSERT INTO `xxx_php_mvc_jokes_yyyy_sn`.`categories`(`id`, `name`, `created_at`)
+VALUES (11, 'dad', '1970-01-01 00:00:01');
 
-INSERT INTO `categories`(`name`,`created_at`)
-    VALUES
-    ('programmer','1970-01-01 00:00:01'),
-    ('web','1970-01-01 00:00:01'),
-    ('knock-knock','1970-01-01 00:00:01'),
-    ('rude','1970-01-01 00:00:01'),
-    ('dog','1970-01-01 00:00:01'),
-    ('cat','1970-01-01 00:00:01'),
-    ('animal','1970-01-01 00:00:01');
-
-
-
+INSERT INTO `xxx_php_mvc_jokes_yyyy_sn`.`categories`(`id`, `name`, `created_at`)
+VALUES (9, 'geek', '1970-01-01 00:00:02'),
+       (10, 'programmer', '1970-01-01 00:00:02'),
+       (2, 'web', '1970-01-01 00:00:02'),
+       (3, 'knock-knock', '1970-01-01 00:00:03'),
+       (4, 'rude', '1970-01-01 00:00:04'),
+       (5, 'dog', '1970-01-01 00:00:05'),
+       (6, 'cat', '1970-01-01 00:00:06'),
+       (7, 'halloween', '1970-01-01 00:00:07'),
+       (8, 'animal', '1970-01-01 00:00:08');
 
 
+-- --------------------------------------------------------------------------------------------
+-- Seed Jokes Table
+-- --------------------------------------------------------------------------------------------
+
+INSERT INTO `xxx_php_mvc_jokes_yyyy_sn`.`jokes`(`id`, `title`, `body`, `category_id`, `tags`,
+                                                `author_id`, `created_at`, `updated_at`)
+VALUES (1, "Skeleton Fight",
+        "Why don't skeletons fight each other? They don't have the guts.",
+        7, "spooky,funny", 1, now(), now()),
+       (2, "Parallel Lines",
+        "Parallel lines have so much in common. It's a shame they'll never meet.",
+        9, "geometry,puns", 105, now(), now()),
+       (3, "Embracing Mistakes",
+        "I told my wife she should embrace her mistakes. She gave me a hug.",
+        11, "relationships,dad jokes", 104, now(), now()),
+       (4, "Broken Pencil",
+        "I was going to tell a joke about a broken pencil, but it was pointless.",
+        11, "puns,funny", 103, now(), now()),
+       (5, "Light Sleeper",
+        "I told my wife she should stop sleeping in the fridge. She said she's just a light sleeper.",
+        11, "sleep,puns", 105, now(), now()),
+       (6, "Elevator Business",
+        "I'm thinking of starting a business installing elevators. I hear it has its ups and downs.",
+        11, "work,puns", 104, now(), now());

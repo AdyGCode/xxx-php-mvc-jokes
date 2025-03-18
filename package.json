@@ -1,8 +1,53 @@
 {
-  "devDependencies": {
-    "tailwindcss": "^3.4.10"
+  "name": "adygcode/xxx-php-mvc-yyyy=sn",
+  "description": "Simple PHP MVC & TailwindCSS Application Template",
+  "type": "project",
+  "version": "0.1",
+  "time": "2025-03-15",
+  "keywords": [
+    "mvc",
+    "framework",
+    "vanilla",
+    "demo",
+    "mysql",
+    "mariadb"
+  ],
+  "minimum-stability": "stable",
+  "license": "SEE LICENSE IN Licence.md",
+  "authors": [
+    {
+      "name": "Adrian Gould",
+      "email": "adrian.gould@nmtafe.wa.edu.au",
+      "homepage": "https://adygcode.github.io",
+      "role": "Developer"
+    },
+    {
+      "name": "Brad Traversy",
+      "email": "support@traversymedia.com",
+      "homepage": "https://www.traversymedia.com"
+    }
+  ],
+  "require": {
+    "php": ">=8.3"
   },
-  "dependencies": {
-    "simplemde": "^1.11.2"
+  "autoload": {
+    "psr-4": {
+      "Framework\\": "Framework/",
+      "App\\": "App/"
+    }
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "serve": "vite preview",
+    "dev": "vite",
+    "build": "vite build"
+  },
+  "devDependencies": {
+    "@tailwindcss/cli": "^4.0.13",
+    "@tailwindcss/postcss": "^4.0.13",
+    "@tailwindcss/vite": "^4.0.13",
+    "tailwindcss": "^4.0.13",
+    "vite-plugin-live-reload": "^3.0.4",
+    "vite-plugin-php": "^2.0.1"
   }
 }
